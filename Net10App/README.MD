@@ -9,7 +9,7 @@ docker build -t dotnet_10p4_publish_container -f ./publish.Dockerfile .
 docker run --rm -v "$(pwd)/publish_output_from_container:/app/publish" dotnet_10p4_publish_container
 ```
 
-Publish output will be in `publish_output_from_container` directory.
+Publish output will be in `publish_output_from_container` directory. You can zip it and delpoy.
 
 ##### Deploy published output.
 
@@ -18,12 +18,3 @@ az login
 az account set --subscription "Private Test Sub shkr"
 az functionapp deployment source config-zip -g perfapps-easia-rg -n linux-cons-net9-perfapp-queandblob-eas-4 --src "D:\src\PerfMonitoringApp\src\publish_output_from_container\App_0515_1145PST.zip"
 ```
-
-### To run
-
-Setup below app settings:
-
-ECommerceStorageConString - Connection string to storage account.
-NewProductsQueueName - Name of the queue.
-
-
